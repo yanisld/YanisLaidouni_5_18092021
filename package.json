@@ -4,11 +4,13 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./theme/sass/style.scss:theme/css/style.css"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^5.1.1",
     "express": "^4.17.1",
     "uuid": "^3.3.2"
   }
