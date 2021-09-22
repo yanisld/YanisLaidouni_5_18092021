@@ -1,0 +1,28 @@
+.intro {
+    min-height: 200px;
+    display: grid;
+    align-items: center;
+    background-image: url(../../../images/teddy_2.jpg);
+    background-repeat: no-repeat;
+    background-position: center 24%;
+    margin: 0 0 50px 0;
+    box-shadow: 0px 5px 8px $grey;
+    &__text {
+        font-size: 28px;
+        text-align: center;
+        line-height: 35px;
+        &--h2 {
+            font-family: $bold-font;
+        }
+    }
+}
+.products {
+    max-width:1024px;
+    margin: auto;
+    &__list {
+        display: grid;
+        grid-template-columns: 300px;
+        grid-row-gap:40px;
+        justify-content: center;
+    }
+}

@@ -1,1 +1,10 @@
-@import "vendors/bootstrap/bootstrap.scss";
+@import "utils/variables";
+@import "base/reset";
+@import "base/typographie";
+@import "layout/body";
+@import "layout/header";
+@import "layout/section";
+@import "layout/responsive";
+@import "layout/footer";
+@import "pages/home";
+@import "components/buttons";

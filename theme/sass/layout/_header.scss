@@ -1,0 +1,16 @@
+.header {
+    font-family: $title-font;
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 20px 25px 15px 25px;
+    &__heading {
+        font-size: 36px;
+        color: $primary-color;
+    }
+    &__icons {
+        text-align: right;
+        a:hover {
+            color:$primary-color;
+        }
+    }
+}

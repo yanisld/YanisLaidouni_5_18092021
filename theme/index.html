@@ -6,41 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/index.js" defer></script>
+    <script src="js/index.js" async></script>
     <title>Orinoco</title>
 </head>
 
 <body>
-    <header class="border-bottom shadow-sm px-1 px-sm-5">
-        <div class="row g-0 align-items-center">
-            <div class="col">
-                <h1 class="h1">Orinoco</h1>
+    <header class="header">
+            <div class="header__heading">
+                <h1>Orinoco</h1>
             </div>
-            <div class="col text-end">
-                <span>Panier</span>
+            <div class="header__icons">
+                <a href="/panier.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                        <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                    </svg>
+                </a>
             </div>
-        </div>
     </header>
     <main>
-        <section>
-            <div>
-                <div class="text-center">
-                    <h2>Un companion pour votre enfant</h2>
-                    <button type="button" class="btn btn-primary">Voir les produits</button>
-                </div>
+        <section class="intro">
+            <div class="intro__text">
+                <h2 class="intro__text--h2">Adoptez un ours en peluche.<br/>Le companion idéal pour les enfants</h2>
+                <button type="button">Voir les produits</button>
             </div>
         </section>
-        <section class="container-lg">
-            <div id="product-list">
-                
+        <section class="products">
+            <div id="products-list" class="products__list">
+
             </div>
         </section>
     </main>
-    <footer>
-        <div>
+    <footer class="footer">
+        <div class="footer__top">
             <h3>Orinoco</h3>
         </div>
-        <div>
+        <div class="footer__bottom">
             <p>Tous droits réservés.</p>
         </div>
     </footer>

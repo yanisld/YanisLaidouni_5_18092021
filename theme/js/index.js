@@ -18,31 +18,32 @@ function initialize(products) {
 
 // Affichage des produits sur la page d'accueil
 function displayProducts(products) {
-    const productList = document.querySelector('#product-list');
+    const productList = document.querySelector('#products-list');
 
     for (let product of products) {
-        const divCard = document.createElement("div");
+        const cardLink = document.createElement("a");
+        const divCard = document.createElement("div"); 
         const cardDivImg = document.createElement("div");
         const cardBody = document.createElement("div");
         const cardTitle = document.createElement("h3");
         const cardPrice = document.createElement("p");
-        const cardButton = document.createElement("button");
 
-        cardDivImg.style.height = "350px";
         cardDivImg.style.backgroundImage = "url(" + product.imageUrl + ")";
-        cardDivImg.style.backgroundSize = "cover";
-        cardDivImg.style.backgroundPosition = "center";
+        divCard.classList.add("product-item"); 
+        cardLink.setAttribute("href", "/produit.html"); 
+        cardDivImg.classList.add("product-item__img"); 
+        cardBody.classList.add("product-item__body");
+        cardTitle.classList.add("product-item__body__title");
+        cardPrice.classList.add("product-item__body__price");
         cardTitle.textContent = product.name;
         cardPrice.textContent = product.price + " €";
-        cardButton.textContent = "Ajouter au panier";
-        cardButton.classList.add("btn", "btn-primary");
 
-        productList.appendChild(divCard);
+        productList.appendChild(cardLink);
+        cardLink.appendChild(divCard);
         divCard.appendChild(cardDivImg);
         divCard.appendChild(cardBody);
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardPrice);
-        cardBody.appendChild(cardButton);
     }
 }
 

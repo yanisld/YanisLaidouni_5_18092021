@@ -1,0 +1,19 @@
+.product-item {
+    &__img {
+        height: 350px;
+        background-size: cover;
+        background-position: center;
+    }
+    &__body {
+        line-height: 25px;
+        padding: 10px 20px;
+        &__title {
+            font-size: 20px;
+            font-family: $bold-font;
+        }
+    }
+    &:hover {
+        box-shadow: 0px 1px 10px $grey;
+        border-radius: 8px;
+    }
+}

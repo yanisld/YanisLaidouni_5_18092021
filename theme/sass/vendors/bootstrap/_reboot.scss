@@ -48,7 +48,6 @@
 // scss-docs-start reboot-body-rules
 body {
   margin: 0; // 1
-  font-family: var(--#{$variable-prefix}body-font-family);
   @include font-size(var(--#{$variable-prefix}body-font-size));
   font-weight: var(--#{$variable-prefix}body-font-weight);
   line-height: var(--#{$variable-prefix}body-line-height);
