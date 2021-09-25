@@ -19,7 +19,7 @@ function initialize(products) {
 // Affichage des produits sur la page d'accueil
 function displayProductsHome(products) {
     const productList = document.querySelector('#products-list');
-    let urlParam = new URLSearchParams("/produit.html?");
+    let urlParam = new URLSearchParams();
 
     for (let product of products) {
         const cardLink = document.createElement("a");
@@ -32,7 +32,7 @@ function displayProductsHome(products) {
         cardDivImg.style.backgroundImage = "url(" + product.imageUrl + ")";
         divCard.classList.add("product-item"); 
         urlParam.set("id", product._id);
-        cardLink.setAttribute("href", decodeURIComponent(urlParam));
+        cardLink.setAttribute("href", "/produit.html?" + decodeURIComponent(urlParam));
         cardLink.classList.add("product-list__link");
         cardDivImg.classList.add("product-item__img"); 
         cardBody.classList.add("product-item__body");
