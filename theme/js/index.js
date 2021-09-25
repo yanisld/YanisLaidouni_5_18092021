@@ -13,12 +13,13 @@ fetch("http://localhost:3000/api/teddies")
 
 // Initialisation des scripts
 function initialize(products) {
-    displayProducts(products);
+    displayProductsHome(products);
 }
 
 // Affichage des produits sur la page d'accueil
-function displayProducts(products) {
+function displayProductsHome(products) {
     const productList = document.querySelector('#products-list');
+    let urlParam = new URLSearchParams("/produit.html?");
 
     for (let product of products) {
         const cardLink = document.createElement("a");
@@ -30,13 +31,15 @@ function displayProducts(products) {
 
         cardDivImg.style.backgroundImage = "url(" + product.imageUrl + ")";
         divCard.classList.add("product-item"); 
-        cardLink.setAttribute("href", "/produit.html"); 
+        urlParam.set("id", product._id);
+        cardLink.setAttribute("href", decodeURIComponent(urlParam));
+        cardLink.classList.add("product-list__link");
         cardDivImg.classList.add("product-item__img"); 
         cardBody.classList.add("product-item__body");
         cardTitle.classList.add("product-item__body__title");
         cardPrice.classList.add("product-item__body__price");
         cardTitle.textContent = product.name;
-        cardPrice.textContent = product.price + " €";
+        cardPrice.textContent = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(product.price/100);
 
         productList.appendChild(cardLink);
         cardLink.appendChild(divCard);
@@ -46,4 +49,3 @@ function displayProducts(products) {
         cardBody.appendChild(cardPrice);
     }
 }
-
