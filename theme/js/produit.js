@@ -38,7 +38,14 @@ function displayProductPage(products) {
                 colorsOptionProduct.innerHTML = color;
                 colorsProduct.appendChild(colorsOptionProduct);
             }
-            
+
+            divImgProduct.classList.add("product-detail__img-bloc");
+            detailProduct.classList.add("product-detail__text-bloc");
+            titleProduct.classList.add("product-detail__text-bloc__title");
+            descProduct.classList.add("product-detail__text-bloc__desc");
+            priceProduct.classList.add("product-detail__text-bloc__price");
+            colorsProduct.classList.add("product-detail__text-bloc__color");
+            addToCart.classList.add("product-detail__text-bloc__cart");
             imgProduct.src = product.imageUrl;
             titleProduct.textContent = product.name;
             descProduct.textContent = product.description;

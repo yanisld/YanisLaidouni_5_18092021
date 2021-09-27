@@ -32,6 +32,7 @@ function displayProductsHome(products) {
         cardDivImg.style.backgroundImage = "url(" + product.imageUrl + ")";
         divCard.classList.add("product-item"); 
         urlParam.set("id", product._id);
+        urlParam.set("name", product.name);
         cardLink.setAttribute("href", "/produit.html?" + decodeURIComponent(urlParam));
         cardLink.classList.add("product-list__link");
         cardDivImg.classList.add("product-item__img"); 
