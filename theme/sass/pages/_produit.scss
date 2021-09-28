@@ -1,8 +1,6 @@
 .product-detail {
     display:flex;
     flex-wrap: wrap;
-    max-width: 1024px;
-    margin:0 auto;
     justify-content: center;
     &__img-bloc {
         max-width: 512px;

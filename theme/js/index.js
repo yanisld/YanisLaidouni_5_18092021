@@ -1,10 +1,8 @@
 fetch("http://localhost:3000/api/teddies")
     .then(function(response) {
-        console.log("Fetch fonctionne");
         return response.json();
     })
     .then(function(products) {
-        console.log("Initialisation réussie");
         return initialize(products);
     })
     .catch(function(error) {
@@ -14,6 +12,7 @@ fetch("http://localhost:3000/api/teddies")
 // Initialisation des scripts
 function initialize(products) {
     displayProductsHome(products);
+    getCartCount();
 }
 
 // Affichage des produits sur la page d'accueil
@@ -49,4 +48,17 @@ function displayProductsHome(products) {
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardPrice);
     }
+}
+
+// Comptage des produits dans le panier
+function getCartCount() {
+    const elemCount = document.getElementById("header__icons__cart-count");
+    let productTab = [];
+    if (!localStorage.getItem("produit")) {
+        productTab.push(0);
+    }
+    else {
+        productTab = JSON.parse(localStorage.getItem("produit"));
+        elemCount.innerHTML = productTab.length;
+    } 
 }

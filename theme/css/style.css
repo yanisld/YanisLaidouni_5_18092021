@@ -131,6 +131,11 @@ body {
   font-family: "latobold", sans-serif;
 }
 
+.section-content {
+  max-width: 1024px;
+  margin: auto;
+}
+
 .products {
   max-width: 1024px;
   margin: auto;
@@ -197,8 +202,6 @@ body {
 .product-detail {
   display: flex;
   flex-wrap: wrap;
-  max-width: 1024px;
-  margin: 0 auto;
   justify-content: center;
 }
 .product-detail__img-bloc {
