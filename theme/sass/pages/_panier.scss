@@ -1,0 +1,36 @@
+.cart {  
+    padding: 0 10px;
+    &__intro {
+        font-family: $bold-font;
+        font-size: 20px;
+        text-align: center;
+        margin: 50px 0 0 0;
+    }
+    &__item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 550px;
+        margin: 10px auto 0;
+        border-top: 1px solid $grey;
+        padding: 10px 0 0 0;
+        &__img {
+            max-width:150px;
+        }
+        &__title {
+            font-family: $bold-font;
+            font-size: 20px;
+        }
+        &__price {
+            font-family: $bold-font;
+        }
+    }
+    &__total-price {
+        max-width: 550px;
+        margin: 10px auto 0;
+        border-top: 1px solid $grey;
+        padding: 10px 0 0 0;
+        text-align: right;
+        font-family: $bold-font;
+    }
+}

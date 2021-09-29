@@ -27,8 +27,32 @@
     <main>
         <section class="section-content">
             <div class="cart">
-
+                <h2 class="cart__intro">Votre Panier</h2>
             </div>
+        </section>
+        <section class="section-content">
+            <h2 class="cart__intro">Passez Commande</h2>
+            <form class="cart-form" action="js/panier.js" method="POST" autocomplete="on">
+                <fieldset class="cart-form__group">
+                    <legend>Identité</legend>
+                    <p><label for="name">Nom</label> <input type="text" name="name" required /></p>
+                    <p><label for="firstname">Prénom</label> <input type="text" name="firstname" required /></p>
+                    <p><label for="dateofbirth">Date de naissance</label> <input class="cart-form__group__date" type="date" name="dateofbirth" /></p>
+                </fieldset>
+                <fieldset class="cart-form__group">
+                    <legend>Coordonnées</legend>
+                    <p><label for="address">Adresse</label> <input type="text" name="address" /></p>
+                    <p><label for="zipcode">Code postal</label> <input type="text" name="zipcode" pattern="[0-9]{,5}" /></p>
+                    <p><label for="city">Ville</label> <input type="text" name="city" /></p>
+                    <p><label for="country">Pays</label> <input type="text" name="country" /></p>
+                </fieldset>
+                <fieldset class="cart-form__group">
+                    <legend>Contact</legend>
+                    <p><label for="email">Email</label> <input type="email" name="email" /></p>
+                    <p><label for="phone">Téléphone</label> <input type="tel" name="phone" /></p>
+                </fieldset>
+                <input class="cart-form__submit" type="submit" value="Envoyer" />
+            </form>
         </section>
     </main>
     <footer class="footer">

@@ -19,17 +19,18 @@ function initialize(products) {
 // Afficher les produits dans le panier
 function displayCart() {
     const cartList = document.querySelector('.cart');  
+    const cartIntro = document.querySelector('.cart__intro');  
     let storage = [];
       
     if (!localStorage.getItem("produit")) {
         storage.push(0);
-        cartList.textContent = "Panier vide";
+        cartIntro.textContent = "Panier vide";
     }
     storage = JSON.parse(localStorage.getItem("produit"));
     for (let i in storage) {          
         const cartItem = document.createElement("div");
         const cartImg = document.createElement("img");
-        const cartTitle = document.createElement("h2");
+        const cartTitle = document.createElement("h3");
         const cartPrice = document.createElement("span");   
         
         cartItem.classList.add("cart__item");
@@ -42,14 +43,16 @@ function displayCart() {
         cartItem.appendChild(cartTitle); 
         cartItem.appendChild(cartPrice);
        
-        cartTitle.textContent = storage[i].title;        
+        cartImg.src = storage[i].image;
+        cartTitle.textContent = storage[i].title;
+        cartPrice.textContent = storage[i].price;        
     }
 }
 
 // Prix total des produits
 function getTotalPrice() {
     const cartList = document.querySelector('.cart');
-    const TotalCartPrice = document.createElement("span"); 
+    const TotalCartPrice = document.createElement("div"); 
     TotalCartPrice.classList.add("cart__total-price");
     cartList.appendChild(TotalCartPrice);
 
@@ -59,7 +62,7 @@ function getTotalPrice() {
     for (let i in storage) { 
         prices.push(parseFloat(storage[i].price));
         
-        TotalCartPrice.textContent = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(prices.reduce(reducer));
+        TotalCartPrice.textContent = "Total: " + new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(prices.reduce(reducer));
     }
 }
 

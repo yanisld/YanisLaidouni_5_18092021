@@ -7,6 +7,16 @@
             grid-row-gap:40px;
         }
     }
+    .cart__item__img {
+        max-width:250px;
+    }
+    .cart-form__group p {
+        display: grid;
+        grid-template-columns: 183px 183px 183px;
+    }
+    .cart-form__submit {
+        float: right;
+    }
 }
 @media screen and (min-width: 992px) {
     .products {
@@ -17,5 +27,6 @@
             justify-content: space-between;
         }
     }
+    
 }
 

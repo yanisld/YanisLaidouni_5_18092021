@@ -1,0 +1,49 @@
+.cart-form {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 0 10px;
+    &__group {
+        border-top: 1px solid $grey;
+        & legend {
+            padding: 0 10px 0 0;
+            font-family: $bold-font;
+            font-size: 18px;
+        }
+        & p {
+            margin: 15px 0;
+            display: grid;
+            grid-template-columns: 100px 183px;
+            & label {
+                text-align: right;
+                padding: 0 5px 0 0;
+            }
+        }
+        & input {
+            font-family: $global-font;
+            font-size: 16px;
+            border: 2px solid $grey;
+            border-radius: 3px;
+            outline: none;
+            margin: auto;
+            &:focus {
+                border: 2px solid $primary-color;
+            }
+        }
+        &__date {
+            width: 176px;
+        }
+    }
+    &__submit {
+        background-color: $primary-color;
+        font-family: $thin-font;
+        font-weight: 600;
+        color: #fff;
+        border:none;
+        border-radius: 3px;
+        padding: 12px 30px;
+        cursor: pointer;
+        &:hover {
+            background-color: darken($primary-color, 10%);
+        }
+    }
+}
