@@ -75,8 +75,13 @@ function displayProductPage(products) {
 function addToCart() { 
     const btnAddToCart = document.getElementById("btn-cart");
 
+    let searchParams = new URLSearchParams(window.location.href);
+    let url = new URL(decodeURIComponent(searchParams));
+    let idUrl = url.searchParams.get("id");
+
     class Product {
-        constructor(image, title, price) {
+        constructor(id, image, title, price) {
+        this.id = id;
         this.image = image;
         this.title = title;
         this.price = price;
@@ -85,7 +90,11 @@ function addToCart() {
 
     let obj = [];
     
-    btnAddToCart.addEventListener('click', function() {     
+    btnAddToCart.addEventListener('click', function() {   
+        let searchParams = new URLSearchParams(window.location.href);
+        let url = new URL(decodeURIComponent(searchParams));
+        let idUrl = url.searchParams.get("id");
+        
         const productImg = document.getElementById("product-img-detail");
         const productTitle = document.getElementById("product-title-detail");
         const productPrice = document.getElementById("product-price-detail");
@@ -94,7 +103,7 @@ function addToCart() {
         if(localStorage.getItem("produit")){
             obj = JSON.parse(localStorage.getItem("produit"));
         }
-        let productDatas = new Product(productImg.src, productTitle.innerHTML, productPrice.textContent);
+        let productDatas = new Product(idUrl, productImg.src, productTitle.innerHTML, productPrice.textContent);
         obj.push(productDatas);
         localStorage.setItem("produit", JSON.stringify(obj));
         elemCount.innerHTML = obj.length;

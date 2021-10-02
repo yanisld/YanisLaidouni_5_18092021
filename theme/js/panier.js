@@ -14,6 +14,7 @@ function initialize(products) {
     displayCart();
     getTotalPrice();
     getCartCount();
+    sendCartForm();
 }
 
 // Afficher les produits dans le panier
@@ -77,4 +78,59 @@ function getCartCount() {
         productTab = JSON.parse(localStorage.getItem("produit"));
         elemCount.innerHTML = productTab.length;
     } 
+}
+
+// Envoi du formulaire
+function sendCartForm() {
+    const cartForm = document.getElementById("cart-form");
+    cartForm.addEventListener("submit", function(event) {      
+        event.preventDefault();
+        
+        const formData = new FormData();
+        for (let data of cartForm) {
+            formData.append(data.name, data.value);   
+        }
+        formData.delete('');
+
+        /*class Contact {
+            constructor(firstname, lastname, address, city, email) {
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.address = address;
+            this.city = city;
+            this.email = email;
+            }
+        }
+        let contact = {};
+        for (let key of formData.keys()) {
+            for (let value of formData.values()) {
+            contact = {key: value};
+            }
+        }*/
+        let productsList = localStorage.getItem("produit");
+        let products = [];
+        for (let i in productsList) {
+            products = productsList[i];
+        }
+        console.log(products);
+
+        
+        fetch("http://localhost:3000/api/teddies/order", {
+	        method: "POST", 
+            headers: { 
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json; charset=utf-8' 
+                },
+            body: formData
+        })
+        .then(function(response) {
+            return response;
+        })
+        .then(function(data) {
+            console.log(data);
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+    });
 }
