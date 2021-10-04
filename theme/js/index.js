@@ -53,12 +53,16 @@ function displayProductsHome(products) {
 // Comptage des produits dans le panier
 function getCartCount() {
     const elemCount = document.getElementById("header__icons__cart-count");
-    let productTab = [];
-    if (!localStorage.getItem("produit")) {
-        productTab.push(0);
+    let productTab = JSON.parse(localStorage.getItem("product"));
+    let cartNumber = 0;
+    if (!localStorage.getItem("product")) {
+        cartNumber = 0;
+        
     }
     else {
-        productTab = JSON.parse(localStorage.getItem("produit"));
-        elemCount.innerHTML = productTab.length;
-    } 
+        for (let i in productTab){
+            cartNumber = cartNumber + productTab[i].quantite;    
+        }
+        elemCount.innerHTML = cartNumber;
+    }
 }
