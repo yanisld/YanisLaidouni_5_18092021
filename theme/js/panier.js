@@ -13,6 +13,7 @@ fetch("http://localhost:3000/api/teddies")
 function initialize(products) {
     displayCart(products);
     getTotalPrice();
+    emptyCart();
     getCartCount();
     sendCartForm();
 }
@@ -60,24 +61,42 @@ function displayCart(products) {
 
 // Prix total des produits
 function getTotalPrice() {
-    const cartList = document.querySelector('.cart');
-    const TotalCartPrice = document.createElement("div"); 
-    TotalCartPrice.classList.add("cart__total-price");
-    cartList.appendChild(TotalCartPrice);
-    
-    let total = 0;
-    let price = cartList.querySelectorAll(".cart__item__price");
-    let quantity = cartList.querySelectorAll(".cart__item__qty");
-    let qtyTab = [];
-    let i = 0;
-    for (let qty of quantity.values()) {
-        qtyTab.push(parseFloat(qty.textContent));
+    if (localStorage.getItem("product")) {
+        const cartList = document.querySelector('.cart');
+        const TotalCartPrice = document.createElement("div"); 
+        TotalCartPrice.classList.add("cart__total-price");
+        cartList.appendChild(TotalCartPrice);
+        
+        let total = 0;
+        let price = cartList.querySelectorAll(".cart__item__price");
+        let quantity = cartList.querySelectorAll(".cart__item__qty");
+        let qtyTab = [];
+        let i = 0;
+        for (let qty of quantity.values()) {
+            qtyTab.push(parseFloat(qty.textContent));
+        }
+        for (let value of price.values()) {
+            total = total + parseFloat(value.textContent) * qtyTab[i];
+            i++;   
+        }
+        TotalCartPrice.textContent = "Total: " + new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(total);
     }
-    for (let value of price.values()) {
-        total = total + parseFloat(value.textContent) * qtyTab[i];
-        i++;   
+}
+
+// Bouton pour vider le panier
+function emptyCart() {
+    if (localStorage.getItem("product")) {
+        const cartList = document.querySelector('.cart');
+        const btnEmptyCart = document.createElement("button");
+        btnEmptyCart.classList.add("cart__empty-cart");
+        btnEmptyCart.textContent = "Vider le panier";
+        cartList.appendChild(btnEmptyCart);
+
+        btnEmptyCart.addEventListener('click', function() {
+            localStorage.clear();
+            location.reload();
+        });
     }
-    TotalCartPrice.textContent = "Total: " + new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(total);
 }
 
 // Comptage des produits dans le panier
@@ -87,7 +106,6 @@ function getCartCount() {
     let cartNumber = 0;
     if (!localStorage.getItem("product")) {
         cartNumber = 0;
-        
     }
     else {
         for (let i in productTab){
@@ -136,6 +154,7 @@ function sendCartForm() {
         .then(function(data) {
             localStorage.setItem("commande", JSON.stringify(data.orderId));
             localStorage.setItem("total", document.querySelector(".cart__total-price").textContent);
+            localStorage.removeItem("product");
             window.location.href = "http://localhost:3000/confirmation.html";
         })
         .catch(function(error) {
