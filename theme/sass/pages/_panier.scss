@@ -1,5 +1,6 @@
 .cart {  
     padding: 0 10px;
+    text-align: center;
     &__intro {
         font-family: $bold-font;
         font-size: 20px;
@@ -20,6 +21,9 @@
         &__title {
             font-family: $bold-font;
             font-size: 20px;
+        }
+        &__qty {
+            font-family: $bold-font;
         }
         &__price {
             font-family: $bold-font;

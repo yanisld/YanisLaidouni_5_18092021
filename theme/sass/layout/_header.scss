@@ -2,9 +2,10 @@
     font-family: $title-font;
     display: grid;
     grid-template-columns: auto auto;
-    padding: 20px 25px 15px 25px;
+    padding: 10px 25px 15px 25px;
     &__heading {
         font-size: 36px;
+        padding: 14px 0 0 0;
         a {
             color: $primary-color;
         }
@@ -15,4 +16,10 @@
             color:$primary-color;
         }
     }
+}
+#header__icons__cart-count {
+    position: relative;
+    bottom: 5px;
+    font-family: "latoblack", sans-serif;
+    font-size: 18px;
 }

@@ -7,7 +7,7 @@ function displayOrder(){
     orderDetail.appendChild(totalPrice);
     
     displayIdOrder.textContent = JSON.parse(localStorage.getItem("commande"));
-    totalPrice.textContent = localStorage.getItem("total");
+    totalPrice.textContent = "total" + localStorage.getItem("total");
 }
 
 // Terminer la commande

@@ -299,7 +299,7 @@ function displayOrder(){
     orderDetail.appendChild(displayIdOrder);
     orderDetail.appendChild(totalPrice);
     
-    displayIdOrder.textContent = JSON.parse(localStorage.getItem("commande"));
+    displayIdOrder.textContent = "Numéro de commande: " + JSON.parse(localStorage.getItem("commande"));
     totalPrice.textContent = localStorage.getItem("total");
 }
 
