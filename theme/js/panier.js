@@ -88,13 +88,11 @@ function emptyCart() {
     }
 }
 
-// Envoi du formulaire
-function sendCartForm() {
+// Récupération des données du formulaire
+function getFormDatas() {
     const cartForm = document.getElementById("cart-form");
-    cartForm.addEventListener("submit", function(event) {      
-        event.preventDefault();
-        
-        const formData = new FormData();
+
+    const formData = new FormData();
         for (let input of cartForm) {
             formData.append(input.name, input.value);   
         }
@@ -105,13 +103,30 @@ function sendCartForm() {
             dataTab.push(data);
         }
         let contact = Object.fromEntries(dataTab);
+        return contact    
+}
 
-        let productsList = JSON.parse(localStorage.getItem("product"));
-        let products = [];
-        for (let i in productsList) {
-            products.push(productsList[i].id);
-        }
-        let order = {"contact": contact, "products": products};
+// Récupération des produits dans le stockage local
+function getProducts() {
+    let productsList = JSON.parse(localStorage.getItem("product"));
+    let products = [];
+    for (let i in productsList) {
+        products.push(productsList[i].id);
+    }
+    return products
+}
+
+// Création de l'objet commande
+function setOrderObject() {
+    let order = {"contact": getFormDatas(), "products": getProducts()};
+    return order;
+}
+
+// Envoi du formulaire
+function sendCartForm() {
+    const cartFormSubmit = document.getElementById("cart-form");
+    cartFormSubmit.addEventListener("submit", function(event) {      
+        event.preventDefault();
         
         fetch("http://localhost:3000/api/teddies/order", {
 	        method: "POST", 
@@ -119,7 +134,7 @@ function sendCartForm() {
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json; charset=utf-8' 
                 },
-            body: JSON.stringify(order)
+            body: JSON.stringify(setOrderObject())
         })
         .then(function(response) {
             return response.json();
