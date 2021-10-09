@@ -1,3 +1,9 @@
+// Initialisation des scripts
+function initialize(products) {
+    displayOrder();
+    endOrder();
+}
+
 // Affichage de la commande
 function displayOrder(){
     const orderDetail = document.getElementById("order-detail");
@@ -6,8 +12,8 @@ function displayOrder(){
     orderDetail.appendChild(displayIdOrder);
     orderDetail.appendChild(totalPrice);
     
-    displayIdOrder.textContent = JSON.parse(localStorage.getItem("commande"));
-    totalPrice.textContent = "total" + localStorage.getItem("total");
+    displayIdOrder.textContent = "Numéro de commande: " + JSON.parse(localStorage.getItem("commande"));
+    totalPrice.textContent = localStorage.getItem("total");
 }
 
 // Terminer la commande
@@ -22,7 +28,3 @@ function endOrder() {
         window.location.href = "/index.html";
     });
 }
-
-// Initialisation des scripts
-displayOrder();
-endOrder();
