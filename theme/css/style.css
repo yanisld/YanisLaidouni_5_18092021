@@ -107,6 +107,7 @@ body {
   color: #d0b17a;
 }
 .header__icons {
+  padding: 10px 0 0 0;
   text-align: right;
 }
 .header__icons a:hover {
