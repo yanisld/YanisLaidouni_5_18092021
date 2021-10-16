@@ -15,7 +15,18 @@ function displayCart(products) {
       
     if (!localStorage.getItem("product")) {
         storage.push(0);
-        cartIntro.textContent = "Panier vide";
+        
+        cartIntro.textContent = "";
+        const alert = document.createElement("div");
+        const closeBtn = document.createElement("span");
+        alert.classList.add("alert");
+        closeBtn.classList.add("closebtn");
+        closeBtn.setAttribute("onclick", "this.parentElement.style.display='none';");
+        alert.textContent = "Votre Panier est Vide";
+        closeBtn.innerHTML = "&times;";
+
+        cartIntro.appendChild(alert); 
+        alert.appendChild(closeBtn); 
     }
     storage = JSON.parse(localStorage.getItem("product"));
     for (let i in storage) {          
@@ -141,9 +152,8 @@ function sendCartForm() {
         })
         .then(function(data) {
             if (!localStorage.getItem("product")){
-                const cartIntro = document.querySelector('.cart__intro');
+                const cartIntro = document.querySelector('.cart__intro'); 
                 cartIntro.textContent = "";
-
                 const alert = document.createElement("div");
                 const closeBtn = document.createElement("span");
                 alert.classList.add("alert");
